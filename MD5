@@ -1,0 +1,12 @@
+569df905af20a284231edaebcd4ad772 *DESCRIPTION
+f65059e7ed257dffa594845e05793e74 *NAMESPACE
+79c50ed19fd73f8103d04745d718b555 *R/CompHomPep_functions.R
+5547d131afc1bc5d914a3d2b1304e880 *R/SNVtoPep_functions.R
+814ba308cde484f6189c6f5fe2e53beb *inst/extdata/ExampleData.RData
+87465a75a3ed6b0574113134f663ee32 *inst/extdata/ExampleHomo_sapiens.GRCh37.70.pep.all.fa
+d6c7e134f23e39a08934a74f04590d29 *inst/extdata/ExampleHumanProt.fasta
+f5924b583f767186ac0c7a723fb95c2d *inst/extdata/ExampleMouseProt.fasta
+146e641910297fac2691df12094bd108 *inst/extdata/myTest_snvToPep.fasta
+14dc12267132fc947b7b6e075e670759 *man/ExampleDataSets.Rd
+15a13dbe3e0f29dccb0cb04a2284cd9f *man/compHomToPepFasta.Rd
+98f60e4b1f46fc3755a513e4aa0dcd04 *man/snvToPepFasta.Rd

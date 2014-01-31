@@ -1,0 +1,4 @@
+import(biomaRt,stringr)
+export(snvToPepFasta,compHomToPepFasta)
+
+
