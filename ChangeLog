@@ -1,8 +1,15 @@
 ChangeLog
 
 
+PepPrep v1.1.0	(Release date: 2014-09-10)
+------------------------------------------
+Changes:
+*	Added the parameters target und exception to the functions compHomPepFasta() and snvToPepFasta().
+	You can now choose different patterns for the digestion.
+
+
+
 PepPrep v1.0.1	(Release date: 2014-09-02)
 ------------------------------------------
 Changes:
-*	Renamed Classification/ACM: Computational genomics, Computational transcriptomics to Classification/ACM-2012 
-
+*	Renamed Classification/ACM: Computational genomics, Computational transcriptomics to Classification/ACM-2012

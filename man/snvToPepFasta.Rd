@@ -12,7 +12,8 @@ small peptides and write the result into a FASTA file, that can be used for furt
 %%  ~~ A concise (1-5 lines) description of what the function does. ~~
 }
 \usage{
-snvToPepFasta(tbl, glst, mymart, myarchive, spath, tpath, width, intermediate = FALSE)
+snvToPepFasta(tbl, glst, mymart, myarchive, spath, tpath, width = 60,
+intermediate = FALSE, target = "K|R", exception = "P")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -41,6 +42,12 @@ snvToPepFasta(tbl, glst, mymart, myarchive, spath, tpath, width, intermediate = 
 %%     ~~Describe \code{width} here~~
 
 }
+  \item{target}{Character string, pattern to be matched before the cleavage site (default "K|R"). 
+%%     ~~Describe \code{width} here~~
+}
+  \item{exception}{Character string, pattern that avoids a cleavage when it can be found behind it. (default"P"). 
+%%     ~~Describe \code{width} here~~
+}
 }
 
 \details{
@@ -57,10 +64,18 @@ If the ENST matches \bold{two or more NM_IDs}, there will be a counter in the he
 >ENSTxcounter|... \cr\cr
 \bold{Trypsination rule}: cut after K and R except when followed by P\cr\cr
 
+You can use target and exception to set other rules for digestion.\cr
+The patterns for target and exception are restricted to one aminoacid.\cr
+Aminoacids: ARNDCQEGHILKMFPSTWYV\cr
+valid patterns: A|R|W|H, P|S\cr
+invalid patterns: Z|F|A|D, AR|NDC|STW\cr
+
 The analysis is based on Ensembl proteindata: \cr
 \url{http://www.ensembl.org/index.html} \cr
 The SNVs annotation has to look like ANNOVAR: \cr
 \url{http://www.openbioinformatics.org/annovar/} \cr
+
+
 %%  ~~ If necessary, more details than the description above ~~
 }
 
@@ -70,7 +85,8 @@ If you set intermediate to TRUE you will get the following output:\cr
 \item{transcripts }{Data.frame, containing: ensemble_transcript_id, nmid and pname.}
 \item{mutfasta }{Character vector that contains FASTA headers and peptide sequences.}
 \item{mutlog}{Character vector contains log entries of errors reported during mutation (mutateProtToPep()). }
-Otherwise just a character vector where to find the FASTA file.
+Otherwise just a character vector where to find the FASTA file or
+an error message.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
@@ -94,7 +110,6 @@ The intermediate output will be big (in most cases), use a variable to save the 
 #load data and set arguments
 
 #data.frame with SNVs
-snv <- system.file("extdata", "ExampleHomo_sapiens.GRCh37.70.pep.all.fa", package="PepPrep")
 tbl <- system.file("extdata", "ExampleData.RData", package="PepPrep")
 load(tbl)
 

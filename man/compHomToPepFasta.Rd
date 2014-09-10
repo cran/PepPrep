@@ -9,7 +9,8 @@ Comparison of proteins and creating homologous peptides workflow
 This is a wrapper for searching pairs of protein sequences by UniProt EntryName, digesting both sequences with trypsin, find homologous parts, remove duplicates, build a new sequence out of them and write the result into a FASTA file, that can be used for further analysis (e.g. compare to mass spectrometry results).
 }
 \usage{
-compHomToPepFasta(path_o1,path_o2,path,width,intermediate = FALSE)
+compHomToPepFasta(path_o1, path_o2, path, width = 60, 
+intermediate = FALSE, target = "K|R", exception = "P")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -26,6 +27,12 @@ compHomToPepFasta(path_o1,path_o2,path,width,intermediate = FALSE)
 %%     ~~Describe \code{width} here~~
 }
   \item{intermediate}{Logical, TRUE if you would like to have intermediate output, FALSE if not (default). 
+%%     ~~Describe \code{width} here~~
+}
+  \item{target}{Character string, pattern to be matched before the cleavage site (default "K|R"). 
+%%     ~~Describe \code{width} here~~
+}
+  \item{exception}{Character string, pattern that avoids a cleavage when it can be found behind it. (default"P"). 
 %%     ~~Describe \code{width} here~~
 }
 }
@@ -52,8 +59,15 @@ SELVQ\bold{K}A\bold{K}LAEQAE\bold{R}YDDMAAAM\bold{K}...\cr
 
 Write the result into a FASTA file, that can be used for further analysis (e.g. compare to mass spectrometry results).
 
+You can use target and exception to set other rules for digestion.\cr
+The patterns for target and exception are restricted to one aminoacid.\cr
+Aminoacids: ARNDCQEGHILKMFPSTWYV\cr
+valid patterns: A|R|W|H, P|S\cr
+invalid patterns: Z|F|A|D, AR|NDC|STW\cr
+
 UniProt, the source of the proteoms: \cr
 \url{http://www.uniprot.org/} \cr
+
 %%  ~~ If necessary, more details than the description above ~~
 }
 
@@ -61,7 +75,8 @@ UniProt, the source of the proteoms: \cr
 If you set intermediate to TRUE you will get the following output:\cr
 \item{tbl }{A data.frame that contains the proteinpairs, the header and the homologous sequence.}
 \item{fasta }{Character vector of the resulting FASTA file.}
-Otherwise just a character vector where to find the FASTA file.
+Otherwise just a character vector where to find the FASTA file or
+an error message.
 %%  ~Describe the value returned
 %%  If it is a LIST, use
 %%  \item{comp1 }{Description of 'comp1'}
